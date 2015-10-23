@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/time.h> //para incluir estructuras timeval
 
 #define MAX_THREADS 4
 #define VECTOR_SIZE 1000000000
@@ -38,7 +39,8 @@ void count_3s() {
 int main(int argc, char* argv[]) {
 	int i = 0;
 	int err;
-	clock_t t1, t2, t3, t4;//se añaden dos variables para contar el tiempo de ejecución en cada caso.
+	struct timeval tv1,tv2,tv3,tv4;
+	clock_t t1, t2, t3, t4;
 
 	if (argc == 2) {
 		max_threads = atoi(argv[1]);
@@ -52,19 +54,25 @@ int main(int argc, char* argv[]) {
 	printf("*** 3s-00 ***\n");
 	printf("Initializing vector... ");
 	fflush(stdout);
-	t1=clock();
+	//t1=clock();
+	gettimeofday(&tv1, NULL);
 	initialize_vector();
-	t2=clock();
-	//se usa la diferencia de los tiempos, antes y después de ejecutar la funcion de inicializacion
-	//y se divide por la constante CLOCKS_PER_SEC (esta incluida en la librería time.h)
-	printf("Vector initialized! - elapsed %f\n", ( (float)t2 - (float)t1 )/CLOCKS_PER_SEC);
+	gettimeofday(&tv2, NULL);
+	//t2=clock();
+	//printf("Vector initialized! - elapsed %lf\n", ( (double)(t2 -t1) )/CLOCKS_PER_SEC);
+	printf("Vector initialized! - elapsed %lfsec.\n", (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
+	         (double) (tv2.tv_sec - tv1.tv_sec));
 	fflush(stdout);
-	t3 = clock();
+	//t3 = clock();
+	gettimeofday(&tv3, NULL);
 	count_3s();
-	t4 = clock();
+	gettimeofday(&tv4, NULL);
+	//t4 = clock();
 	printf("Count by threads %d\n", count);
 	printf("Double check %d\n", double_count);
-	printf("[[3s-00] Elapsed time %f\n", ( (float)t4 - (float)t3 ) / CLOCKS_PER_SEC );
+	//printf("[[3s-00] Elapsed time %lf\n", ( (double)(t4-t3) )/ CLOCKS_PER_SEC );
+	printf("[[3s-00] Elapsed time %lfsec.\n", (double) (tv4.tv_usec - tv3.tv_usec) / 1000000 +
+	         (double) (tv4.tv_sec - tv3.tv_sec));
 	printf("Finishing 3s-00\n");
 	return 0;
 }
