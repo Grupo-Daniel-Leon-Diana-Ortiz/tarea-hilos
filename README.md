@@ -1,2 +1,2 @@
 # tarea-hilos
-página con códigos para resolver la tarea de hilos de la clase Fundamentos de Sistemas Distribuidos
+En este repositorio se encuentra el directorio pthread, con los códigos de los programas solicitados para la clase de Sistemas Distribuidos.
