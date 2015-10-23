@@ -13,7 +13,12 @@ En este ejemplo se trató de implementar los tiempos de ejecución de los hilos,
 
 - Ejemplo 3s-02-mod
 
-En este ejemplo los valores resultantes de la cuenta no son iguales. Esto se da por un efecto llamado "race condition". Este efecto se da porque en algún momento dos (o más hilos) están incrementando la variable "count", y al devolver al mismo tiempo el valor de esta variable a memoria solo se incrementa una sola vez, independiente de que sean varios hilos simultaneamente que estén tratando de incrementar esta variable.
+En este ejemplo los valores resultantes de la cuenta no son iguales. Esto se da por un efecto llamado "race condition". Este efecto se da porque en algún momento dos (o más hilos) están incrementando la variable "count", y al devolver al mismo tiempo el valor de esta variable a memoria solo se incrementa una sola vez, independiente de que sean varios hilos simultaneamente que estén tratando de incrementar esta variable. Para visualizar el tiempo de ejecución de los hilos cambia algo respecto a los ejemplos anteriores: En este caso se vuelve a mostrar cuando empieza el hilo a ejecutarse, y cuando termina la ejecución indica el número del hilo y cuánto tiempo se demoró en su ejecución.
 
-- 
+- Ejemplo 3s-03-mod
+
+En este ejemplo, los valores si son correctos. La manera en que se logra esto es usando los "mutex", que reservan el acceso de una variable, de manera que no suceda lo misom del ejemplo 3s-02-mod, en el que hilos concurrentes buscaban modificar al tiempo una variable y esta solo se modificaba una vez. El tiempo total de la cuenta de 3s en el vector se extendió bastante, fué de 502 segundos; icluso mayor que en los casos secuenciales (entre 150 y 250 segundos).
+
+
+
 
