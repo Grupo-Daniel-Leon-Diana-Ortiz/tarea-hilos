@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 	gettimeofday(&tv2, NULL);
 	//t2=clock();
 	//printf("Vector initialized! - elapsed %lf\n", ( (double)(t2 -t1) )/CLOCKS_PER_SEC);
-	printf("Vector initialized! - elapsed %lfsec.\n", (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
+	printf("Vector initialized! - elapsed %lf sec.\n", (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
 	         (double) (tv2.tv_sec - tv1.tv_sec));
 	fflush(stdout);
 	//t3 = clock();
@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 	printf("Count by threads %d\n", count);
 	printf("Double check %d\n", double_count);
 	//printf("[[3s-00] Elapsed time %lf\n", ( (double)(t4-t3) )/ CLOCKS_PER_SEC );
-	printf("[[3s-00] Elapsed time %lfsec.\n", (double) (tv4.tv_usec - tv3.tv_usec) / 1000000 +
+	printf("[[3s-00] Elapsed time %lf sec.\n", (double) (tv4.tv_usec - tv3.tv_usec) / 1000000 +
 	         (double) (tv4.tv_sec - tv3.tv_sec));
 	printf("Finishing 3s-00\n");
 	return 0;
