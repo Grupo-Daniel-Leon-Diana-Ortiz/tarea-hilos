@@ -25,5 +25,11 @@ La gran diferencia entre este ejemplo y el 3s-03-mod radica en que el mutex (la 
 
 - Ejemplo 3s-05-mod
 
-En este caso el programa se ejecuta rápido para los primeros 6 hilos creados, y para los dos últimos hay una demora mayor. En general es más ágil que los anteriores, la manera de implementar el contado privado e incrementar la variable compartida al terminar de ejecutarse le da un plus de agilidad; pero no se observó una mejora significativa respecto al ejemplo 04 (tiempo de conteo: 96.31, comparado con los 88.59 de promedio del ejemplo 04); aunque si fue más ágil que algunas de las ejecuciones del ejemplo anterior.
+En este caso el programa se ejecuta rápido para los primeros 6 hilos creados, y para los dos últimos hay una demora mayor. En general es más ágil que los anteriores, la manera de implementar el contado privado e incrementar la variable compartida al terminar de ejecutarse le da un plus de agilidad; pero no se observó una mejora significativa respecto al ejemplo 04 (tiempo de conteo: 96.31, comparado con los 88.59 de promedio del ejemplo 04); aunque si fue más ágil que algunas de las ejecuciones del ejemplo anterior. El conteo privado es una vector variable compartida de tamaño MAX_THREADS, que se llena concurrentemente en cada posición dependiendo del hilo que lo esté ejecutando.
+
+ULTIMO PUNTO
+
+Con la modificación del programa propuesta en la página 21 del capítulo 1 del libro, el código no corre mejor. Esta modificación está en el programa 3s-05-v2.c en esta misma carpeta. El código no es más ágil que los dos ejemplos anteriores.
+
+
 
